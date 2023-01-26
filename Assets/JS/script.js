@@ -23,19 +23,24 @@ $(function () {
 });
 
 // set up time function
-function setTime() {
-  var timerInterval = setInterval(function(){
-    todaysDate = moment().format("MMM Do, YYYY, hh:mm:ss");
-    $("#currentDay").text(todaysDate);
-  }, 1000)
-}
+// function setTime() {
+//   var timerInterval = setInterval(function(){
+//     todaysDate = dayjs().format("MMM D, YYYY, hh:mm:ss");
+//     $("#currentDay").text(todaysDate);
+//   }, 1000)
+// }
 
 
 
 
 $(document).ready(function(){
-  $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
+// set up timer
+  setInterval(function(){
+    todaysDate = dayjs().format("MMM D, YYYY, hh:mm:ss");
+    $("#currentDay").text(todaysDate);
+  }, 1000);
 
+//set up save button for saving time and text
   $(".saveBtn").on("click", function(){
     console.log(this);
     var text = $(this).siblings(".description").val();
@@ -44,3 +49,40 @@ $(document).ready(function(){
     localStorage.setItem(time, text);
   })
 })
+
+// save data from local storage for each hour
+$("#hour-9 .description").val(localStorage.getItem("hour-9"));
+$("#hour-10 .description").val(localStorage.getItem("hour-10"));
+$("#hour-11 .description").val(localStorage.getItem("hour-11"));
+$("#hour-12 .description").val(localStorage.getItem("hour-12"));
+$("#hour-1 .description").val(localStorage.getItem("hour-1"));
+$("#hour-2 .description").val(localStorage.getItem("hour-2"));
+$("#hour-3 .description").val(localStorage.getItem("hour-3"));
+$("#hour-4 .description").val(localStorage.getItem("hour-4"));
+$("#hour-5 .description").val(localStorage.getItem("hour-5"));
+
+function timeTracker(){
+  var currentHour = dayjs().hour();
+
+  $(".time-block").each(function(){
+    var blockHour = parseInt($(this).attr("id").split("hour")[1]);
+    console.log(blockHour, currentHour)
+
+    if(currentHour > blockHour){
+      $(this).addClass("pass");
+      $(this).removeClass("futrue");
+      $(this).removeClass("present");
+    }
+    else if (currentHour === blockHour){
+      $(this).addClass("present");
+      $(this).removeClass("futrue");
+      $(this).removeClass("pass");
+    }
+    else {
+      $(this).addClass("futrue");
+      $(this).removeClass("pass");
+      $(this).removeClass("present");
+    }
+  })
+  timeTracker();
+}
