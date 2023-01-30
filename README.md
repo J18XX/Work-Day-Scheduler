@@ -7,6 +7,6 @@ Users need to click the save button to save their events.
 
 Text boxes' colors will change color according to real-time.
 
-![interface display](/Users/jieguangshi/Desktop/BootCamp/Homework/Work-Day-Scheduler/Assets/Images/1.png)
+![Screenshot1](https://github.com/J18XX/Work-Day-Scheduler/blob/main/Assets/Images/1.png)
 
-![interface display](/Users/jieguangshi/Desktop/BootCamp/Homework/Work-Day-Scheduler/Assets/Images/2.png)
+![Screenshot2](https://github.com/J18XX/Work-Day-Scheduler/blob/main/Assets/Images/2.png)
